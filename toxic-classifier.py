@@ -25,4 +25,9 @@ with open('../../../passport/toxic-comments/glove.6B/glove.6B.100d.txt') as file
         vec  = np.asarray(values[1:], dtype='float32') #rest of line is emb
         word2vec[word] = vec
 #print(len(word2vec)) #40k 
-print(word2vec['and'])
+#print(word2vec['and'])
+
+training = pd.read_csv(#path to comments.csv)
+comments = train["comment_text"].values
+labs = ["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"]
+targs = training[labs].values
