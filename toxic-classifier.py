@@ -11,7 +11,7 @@ from keras.models import Model
 from sklearn.metrics import roc_auc_score
 
 MAX_SEQUENCE_LENGTH = 100
-MAX_VOCAB_SIZE = 20000
+MAX_VOCAB = 10000
 EMBEDDING_DIM = 100 ## gloVe comes in specific sizes
 VALIDATION_SPLIT = 0.2
 BATCH_SIZE = 128
@@ -31,3 +31,7 @@ training = pd.read_csv(#path to comments.csv)
 comments = train["comment_text"].values
 labs = ["toxic", "severe_toxic", "obscene", "threat", "insult", "identity_hate"]
 targs = training[labs].values
+
+tokenizer = Tokenizer(num_words = MAX_VOCAB)
+tokenizer.fit_on_texts(comments)
+comments = tokenizer.texts_to_sequences(comments)
