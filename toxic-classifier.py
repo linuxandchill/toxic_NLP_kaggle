@@ -35,3 +35,27 @@ targs = training[labs].values
 tokenizer = Tokenizer(num_words = MAX_VOCAB)
 tokenizer.fit_on_texts(comments)
 comments = tokenizer.texts_to_sequences(comments)
+
+### model architecture
+
+
+model = Model(i,o); 
+### compile
+#i = Input(shape=max_seq_len,)
+#layer1 = Embedding(i)
+#CONV1d
+#maxPool
+#CONV1d
+#maxPool
+#CONV1d
+#maxPool or global max pool??
+
+
+## THEN PASS  THROUGH DENSE LAYER WITH SIGMOID ACTIVATION
+
+
+
+##how to deal with multiple heads?????? 
+model.compile(loss="binary_crossentropy", optimizer="rmsprop")
+### train
+
