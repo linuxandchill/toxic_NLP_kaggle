@@ -39,6 +39,15 @@ comments = tokenizer.texts_to_sequences(comments)
 ### model architecture
 
 
+### EMBEDDING LAYER
+embedding_layer = Embedding(
+  num_words,
+  EMBEDDING_DIM,
+  weights=[embedding_matrix],
+  input_length=MAX_SEQUENCE_LENGTH,
+  trainable=False
+)
+    
 model = Model(i,o); 
 ### compile
 #i = Input(shape=max_seq_len,)
