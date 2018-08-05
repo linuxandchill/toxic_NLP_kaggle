@@ -37,7 +37,19 @@ tokenizer.fit_on_texts(comments)
 comments = tokenizer.texts_to_sequences(comments)
 
 ### model architecture
-
+activation_fn='relu'
+### model architecture
+input = Input(shape=(MAX_SEQUENCE_LENGTH,))
+x=embedding_layer(input)
+x=Conv1D(128,3,activation=activation_fn)(x)
+x=MaxPooling1D(3)(x)
+x=Conv1D(128,3,activation=activation_fn)(x)
+x=MaxPooling1D(3)(x)
+x=Conv1D(128,3,activation=activation_fn)(x)
+x=MaxPooling1D(3)(x)
+x=GlobalMaxPooling1D()(x)
+x= Dense(128,activation=activation_fn)(x)
+out = Dense(len(labs), activation="sigmoid")(x)
 
 ### EMBEDDING LAYER
 embedding_layer = Embedding(
